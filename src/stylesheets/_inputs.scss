@@ -1,0 +1,184 @@
+@mixin button-style($background, $color) {
+  border: 1px solid darken($background, 10%);
+  border-radius: 3px;
+  background: $background;
+  color: $color;
+  font-size: $font--small;
+  display: inline-block;
+  padding: 1em 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.25s ease-in;
+  &:focus {
+    @include focus-style-bold;
+  }
+  &.active {
+    color: $color;
+    background: darken($background, 10%);
+  }
+  &.slim {
+    padding: 10px;
+  }
+  &:disabled {
+    opacity: 0.25;
+    &:hover {
+      cursor: default;
+      background-color: $background;
+    }
+  }
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    color: $color;
+    background: darken($background, 10%);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  &.right {
+    float: right;
+  }
+  &.over-sized {
+    font-size: 1.25em;
+  }
+}
+
+button::-moz-focus-inner { border: 0; }
+
+.button--login { @include button-style($blue, white); }
+.button--basic { @include button-style($gray, $charcoal); }
+.button--default { @include button-style($green, white); }
+.button--oversize { @include button-style($green, white); }
+.button--continue,
+.button--calculate,
+.button--confirm { @include button-style($green, white); }
+.button--trash  { @include button-style($red--warning, white); }
+.button--hairline { @include button-style(white, #999); }
+.button--white-on-red { @include button-style(white, $red--warning); }
+.button--hairline-green {
+  @include button-style(white, #999);
+  &:hover {
+    background: lighten($green, 40%);
+    color: $green;
+  }
+}
+.button--hidden-warning {
+  @include button-style(white, #999);
+  i {
+    display: inline-block;
+    margin-right: -4px;
+  }
+  span {
+    display: inline-block;
+    margin-top: -2px;
+    overflow: hidden;
+    padding: 0 !important;
+    transition: width 0.25s ease-in;
+    vertical-align: middle;
+    width: 0px;
+  }
+  &:hover {
+    background: $red--warning;
+    border-color: darken($red--warning, 20%);
+    color: white;
+    span {
+      width: 60px;
+    }
+  }
+}
+
+.button--main-action {
+  @include button-style($green, white);
+  display: block;
+  font-size: 1.25em;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.button--nav-list-action button {
+  background: $green;
+  border: none;
+  color: white !important;
+  display: block;
+  margin: 3px 0;
+  padding: 8px 10px;
+  text-align: center;
+  transition: all 0.25s ease-in;
+  width: 100%;
+  &:hover {
+    background: darken($green, 5%) !important;
+    cursor: pointer;
+  }
+  @media screen and (min-width: 950px) {
+    padding: 12px 10px;
+  }
+}
+
+.button--add-new {
+  background: white;
+  border: 1px dashed $hairline-blue;
+  color: $nile-blue;
+  display: block;
+  font-family: $body-font;
+  font-size: $font--medium;
+  letter-spacing: -0.025em;
+  padding: 1em 0 2em 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.25s ease-in;
+  width: 100%;
+  img {
+    margin: 0 10px -15px 0;
+    width: 40px;
+  }
+  &:hover {
+    background: $gray;
+    border-color: $nile-blue;
+    cursor: pointer;
+  }
+  &:disabled {
+    opacity: 0.25;
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+
+.button--placeholder {
+  @include span-columns(4);
+  @include shift(4);
+  border: 5px solid red;
+  background: $gray;
+  color: $cadet-blue;
+  font-size: 1em;
+  padding: 2em 0;
+  transition: all 0.25s ease-in;
+  &:hover {
+    border-color: $blue--light;
+    color: $charcoal;
+    cursor: pointer;
+  }
+}
+
+
+.button--text {
+  @include button-style($gray, $charcoal);
+}
+
+// ----------------------------------------------------- Search
+input[type="search"] {
+  background: url('../images/search-light.svg');
+  background-color: white;
+  background-position: 2% 50%;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  border: 1px solid $hairline;
+  color: $gray--medium;
+  font-family: $body-font;
+  padding: 15px;
+  padding-left: 4em;
+  width: 100%;
+}

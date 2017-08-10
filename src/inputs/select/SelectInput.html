@@ -1,0 +1,20 @@
+<div>
+  <label class="primary-label" for="{{ elementId }}">
+    {{ label }}
+  </label>
+
+  <div ng-if="input.shouldShowErrors()">
+    <div class="field-error"
+         ng-repeat="error in errors">
+      {{ error }}
+    </div>
+  </div>
+
+  <select id="{{ elementId }}"
+          alt="{{ label }}"
+          ng-change="input.changed()"
+          ng-blur="input.blurred()"
+          ng-model="model"
+          ng-class="input.isValid() ? 'valid': 'invalid'"
+          ng-options="option.key as option.value for option in options">
+</div>

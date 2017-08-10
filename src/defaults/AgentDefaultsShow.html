@@ -1,0 +1,26 @@
+<fieldset>
+  <legend>General Defaults</legend>
+  <div>
+    <label>City</label>
+    <span class="option answer">{{ form.agentDefaultsViewModel.city }}</span>
+  </div>
+
+  <div>
+    <label>Rated State</label>
+    <span class="option answer">{{ form.agentDefaultsViewModel.state }}</span>
+  </div>
+
+  <div>
+    <label>County</label>
+    <span class="option answer">{{ form.agentDefaultsViewModel.county }}</span>
+  </div>
+
+  <div>
+    <label>Zip Code</label>
+    <span class="option answer">{{ form.agentDefaultsViewModel.zipCode }}</span>
+  </div>
+</fieldset>
+
+<div class="page-actions">
+  <button class="button--basic primary" ng-click="form.navigateToEdit()">Edit</button>
+</div>

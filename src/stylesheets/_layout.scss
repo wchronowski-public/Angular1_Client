@@ -1,0 +1,32 @@
+.sidebar {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .content {
+    padding: 0;
+  }
+}
+.body-content {
+  @include outer-container(9999px);
+}
+
+@media screen and (min-width: 600px) {
+  .sidebar {
+    @include span-columns(2, block-collapse);
+    background: $ice;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+  }
+  .content-wrap {
+    @include span-columns(10, block-collapse);
+    @include shift(2);
+    padding: 20px 30px 8em 30px;
+    .main-content {
+      max-width: $site-width;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,144 @@
+// ----------------------------------------- Animations
+@keyframes easeHeight {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 999px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes pulseIn {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+		transform: translateY(-100%);
+    opacity: 0;
+	}
+  50% {
+    opacity: 0.25;
+  }
+	100% {
+		transform: translateY(0%);
+    opacity: 1;
+	}
+}
+
+@keyframes pageNotificationIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes pageNotificationOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  5% {
+    transform: translateX(-2%);
+  }
+  10% {
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(250%);
+  }
+}
+
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+	opacity:0;  /* make things invisible upon start */
+	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:0.25s;
+	-moz-animation-duration:0.25s;
+	animation-duration:0.25s;
+}
+
+@-webkit-keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+@-moz-keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+@keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+
+.fade-out {
+	opacity:1;
+	-webkit-animation:fadeOut ease-in 1;
+	-moz-animation:fadeOut ease-in 1;
+	animation:fadeOut ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:0.25s;
+	-moz-animation-duration:0.25s;
+	animation-duration:0.25s;
+}

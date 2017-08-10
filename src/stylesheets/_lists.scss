@@ -1,0 +1,150 @@
+.item-list {
+  margin: 0 0 3em 0;
+  padding: 0;
+  li {
+    @include outer-container(1200px);
+    border-bottom: 1px solid $hairline;
+    padding: 15px;
+    position: relative;
+    transition: all 0.25s ease-in;
+    > div,
+    [class*="-column"] {
+      padding: 7px 5px 1px 1px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &.active {
+      color: black;
+      background: $yellow--light;
+      box-shadow: inset 0px 0px 1px darken($yellow--light, 10%);
+    }
+    &:nth-child(odd) {
+      background: $white--off;
+    }
+    &.item-list-header {
+      background: $white--off;
+      color: $nile-blue;
+      font-size: $font--small;
+      font-weight: bold;
+      padding: 15px;
+      width: 100%;
+      .actions {
+        padding-top: 7px;
+      }
+    }
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .primary-column {
+      span {
+        display: block;
+      }
+      .primary {
+        font-weight: bold;
+      }
+      .secondary {
+        font-size: $font--small;
+      }
+    }
+    .single-column { @include span-columns(1, block-collapse); }
+    .double-column { @include span-columns(2, block-collapse); }
+    .triple-column { @include span-columns(3, block-collapse); }
+    .medium-column { @include span-columns(4, block-collapse); }
+    .large-column { @include span-columns(5, block-collapse); }
+    .actions {
+      padding-top: 1px;
+      text-align: right;
+    }
+    .double-line {
+      padding-top: 0;
+    }
+    select {
+      width: 100%;
+    }
+  }
+}
+
+.item-list li .Pending {
+  color: #FCA257;
+  font-weight: bold;
+}
+
+.list-item-actions {
+  .toggler {
+    color: #bbb;
+    font-size: 1.25em;
+    padding: 6px 14px;
+    transition: all 0.25s ease-in;
+    &:hover {
+      cursor: pointer;
+      color: $charcoal;
+    }
+  }
+  .toggle-drawer {
+    display: none;
+    background: white;
+    border: 1px solid $hairline-blue;
+    bottom: 0;
+    right: 65px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    a {
+      background: white;
+      display: inline-block;
+      font-weight: bold;
+      padding: 20px 14px;
+      &.edit {
+      }
+      &.remove {
+      }
+      &.new {
+      }
+    }
+    &.open {
+      animation: slideInLeft 0.2s forwards;
+      display: block;
+    }
+  }
+}
+
+// ----------------------------------------------- Slide in overlay
+.list--warning {
+  animation: slideInLeft 0.4s linear;
+  background: $red--warning;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  margin: 1em 0;
+  padding: 10px;
+  position: absolute;
+  top: -12px;
+  right: -2px;
+  width: 100%;
+  p {
+    display: inline;
+    float: left;
+    margin: 12px 1em 0 1em;
+  }
+  button {
+    @include button-style($red--warning, white);
+    text-align: right;
+    &:first-of-type {
+      background: white;
+      color: $red--warning;
+      &:hover {
+        background: white;
+        color: $charcoal;
+      }
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
+}

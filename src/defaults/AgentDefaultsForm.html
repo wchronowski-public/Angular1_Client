@@ -1,0 +1,45 @@
+  <form ng-submit="form.save()">
+    <div class="page-notification">
+      <p>
+        Default values selected here will be used with each new quote created but can be changed in the quote.  If coverages are changed in the quote those values will instead be used as defaults for subsequent vehicles added to that quote.
+      </p>
+    </div>
+
+    <fieldset>
+      <legend>
+        General Defaults<span>Required field</span>
+      </legend>
+      <div>
+        <text-input label="City"
+                    model="form.agentDefaults.city"
+                    errors="form.errors.city"
+                    context="form"></text-input>
+      </div>
+      <div class="required">
+        <select-input label="Rated State"
+                      options="form.getRatedStates()"
+                      model="form.agentDefaults.state"
+                      errors="form.errors.state"
+                      context="form"></select-input>
+      </div>
+      <div>
+        <text-input label="County"
+                      model="form.agentDefaults.county"
+                      errors="form.errors.county"
+                      context="form"></text-input>
+      </div>
+      <div>
+        <zip-code-input label="Zip Code"
+                        model="form.agentDefaults.zipCode"
+                        errors="form.errors.zipCode"
+                        context="form"></zip-code-input>
+      </div>
+    </fieldset>
+
+    <div class="page-actions">
+      <button class="button--continue primary">Save</button>
+      <button type="button"
+              class="button--text secondary"
+              ng-click="form.cancel()">Cancel</button>
+    </div>
+  </form>

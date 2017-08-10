@@ -1,0 +1,90 @@
+.effective-date-input {
+  @include outer-container(500px);
+  margin-bottom: 3em;
+  label {
+    float: left;
+    padding-top: 7px;
+    width: 25%;
+  }
+  .date-input {
+    position: relative;
+    width: 72%;
+    > div {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 14%;
+      z-index: 10;
+      a {
+        position: absolute;
+        margin-bottom: 5px;
+        top: -34px;
+        right: -7px;
+      }
+    }
+  }
+}
+
+.state-selection {
+  @include outer-container(9999px);
+  li {
+    @include span-columns(4);
+    @include omega(3n);
+    margin-bottom: 2em;
+    position: relative;
+    a {
+      background: $gray;
+      border: 1px dashed $hairline-blue;
+      border-radius: 3px;
+      color: $hairline-blue;
+      display: block;
+      font-size: $font--large;
+      text-align: center;
+      text-decoration: none;
+      padding: 10% 0;
+      &:before {
+        font-family: 'StateFaceRegular';
+        font-size: 6em;
+        display: block;
+      }
+      &:hover {
+        color: $charcoal;
+      }
+      &.selected {
+        animation: pulse 0.25s forwards;
+        background: white;
+        border: 1px solid $green;
+        box-shadow: inset 0px 0px 0px 3px $green;
+        color: $charcoal;
+        font-weight: bold;
+        &:before {
+          color: $green;
+        }
+        &:after {
+          content: "\2714";
+          font-size: $font--large;
+          position: absolute;
+          color: white;
+        }
+      }
+    }
+  }
+  .Arizona:before { content: "D"; }
+  .Arizona:after { left: 48%; top: 33%; }
+  .Illinois:before { content: "N"; }
+  .Illinois:after { left: 47%; top: 30%; }
+  .Indiana:before { content: "O"; }
+  .Indiana:after { left: 48%; top: 30%; }
+  .Iowa:before { content: "L"; }
+  .Iowa:after { left: 45%; top: 33%; }
+  .Ohio:before { content: "i"; }
+  .Ohio:after { left: 46%; top: 33%; }
+  .Wisconsin:before { content: "v"; }
+  .Wisconsin:after { left: 47%; top: 35%; }
+}
+.state-continue {
+  @include span-columns(4);
+  @include shift(4);
+  display: block;
+  padding: 1.5em 0;
+}

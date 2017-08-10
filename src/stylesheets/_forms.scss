@@ -1,0 +1,610 @@
+@mixin input-styling {
+  border: 1px solid $hairline-blue;
+  border-radius: 3px;
+  font-family: $body-font;
+  padding: 8px;
+  transition: all 0.25s ease-in;
+}
+
+@mixin required-star {
+  content: "\f069";
+  color: $orange;
+  font-family: "FontAwesome";
+  font-size: 0.5rem;
+  position: absolute;
+}
+
+
+$label-width: 6;
+$option-width: 6;
+$label-width-full: 9;
+$option-width-full: 3;
+
+$checkbox-width: 4;
+$checkbox-shift: 2;
+$checkbox-width-full: 2;
+$checkbox-shift-full: 1;
+
+
+// TODO: FIX ME, CHRIS!
+a.selected {
+  color: $hairline-blue;
+}
+
+fieldset {
+  border: 0;
+  margin: 0 0 3em 0;
+  padding: 0;
+  legend {
+    border-bottom: 1px solid $cadet-blue;
+    color: $nile-blue;
+    display: block;
+    padding: 10px 0;
+    width: 100%;
+    span {
+      @include span-columns(3);
+      float: right;
+      font-size: .9em;
+      padding-top: 5px;
+      position: relative;
+      &:before {
+        @include required-star;
+        top: 8px;
+        left: -26px;
+      }
+    }
+  }
+  > div {
+    @include outer-container(1200px);
+    border-bottom: 1px solid $hairline;
+    padding: 10px 1px 10px 0px;
+    position: relative;
+    -webkit-transition: all 2s ease-in;
+    &.hidden {
+      animation: slideInDown 0.5s forwards;
+      background: white;
+    }
+    &.required {
+      input.invalid.ng-touched,
+      select.invalid.ng-touched {
+        //box-shadow: inset -1px -9px 0px -7px $red--warning;
+      }
+      input.valid.ng-not-empty:focus {
+        box-shadow: inset -1px -9px 0px -7px $green;
+      }
+      label:after {
+        @include required-star;
+        right: -6px;
+        top: 12px;
+      }
+    }
+    label {
+      @include span-columns($label-width);
+      background: white;
+      padding: 8px 10px 4px 0;
+      position: relative;
+    }
+    .field-error {
+      animation: pulseIn 0.3s forwards;
+      background: $red--warning;
+      color: white;
+      font-size: $font--small;
+      padding: 8px 12px;
+      position: absolute;
+      top: 10px;
+      right: 51%;
+      &:after {
+        border-top: 8px solid transparent;
+        border-left: 8px solid $red--warning;
+        border-bottom: 8px solid transparent;
+        content: "";
+        height: 0;
+        position: absolute;
+        right: -8px;
+        top: 9px;
+        width: 0;
+      }
+    }
+    .option {
+      @include span-columns($option-width);
+    }
+    .answer {
+      font-weight: bold;
+      padding: 8px 4px;
+    }
+    @media screen and (min-width: 800px) {
+      label {
+        @include span-columns($label-width-full);
+      }
+      .option {
+        @include span-columns($option-width-full);
+        overflow: visible;
+      }
+      .field-error {
+        right: 25%;
+      }
+    }
+  }
+}
+.sub-form {
+  animation: easeHeight 1s forwards;
+  @include span-columns(12);
+  border-left: 2px solid $hairline;
+  padding: 0 10px 0 20px;
+  margin-left: 10px;
+  transition: height 5s ease-in;
+  max-height: 999px;
+  fieldset {
+    opacity: 0;
+    animation: fadeIn .5s forwards;
+    animation-delay: 0.25s;
+  }
+  &.borderless {
+    fieldset div:first-of-type {
+      border-top: none;
+    }
+  }
+  fieldset {
+    margin-bottom: 10px;
+  }
+}
+
+
+
+.form-validation-message {
+  animation: pulseIn 0.3s forwards;
+  background: $red--warning;
+  color: white;
+  font-size: $font--small;
+  padding: 12px;
+  &:after {
+    border-top: 8px solid transparent;
+    border-left: 8px solid $red--warning;
+    border-bottom: 8px solid transparent;
+    content: "";
+    height: 0;
+    position: absolute;
+    right: -8px;
+    top: 12px;
+    width: 0  ;
+  }
+}
+
+input.capitalize {
+  text-transform: capitalize;
+}
+
+// ----------------------------------- Select
+select::-ms-expand {	display: none; }
+select {
+  @include input-styling;
+  @include span-columns($option-width);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('../images/down-arrow.svg');
+  background-repeat: no-repeat;
+  background-size: 11px;
+  background-position: 95% 50%;
+  padding-right: 30px;
+  @media screen and (min-width: 800px) {
+    @include span-columns($option-width-full);
+  }
+  @include element-focus;
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+}
+
+
+// ----------------------------------- Basics
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  @include input-styling;
+  @include span-columns($option-width);
+  &::-webkit-input-placeholder {
+    color: $hairline-blue;
+    font-size: $font--small;
+  }
+  @include element-focus;
+  @media screen and (min-width: 800px) {
+    @include span-columns($option-width-full);
+  }
+}
+
+
+input[type="text"].split-text, input[type="number"].split-text {
+  @include input-styling;
+  @include span-columns(1.5);
+}
+
+
+.zipcode {
+  width: 6em !important;
+}
+.zip-extended {
+  width: 4em !important;
+}
+
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// ----------------------------------- Address Auto Fill
+
+input[type="text"].address-autofill-option {
+  @include span-columns(2.7);
+}
+.autofill-toggle {
+  padding: 8px 0px;
+  position: absolute;
+  right: 7px;
+  text-align: center;
+  text-decoration: none;
+  &:after {
+    content: "\f041";
+    font-family: "FontAwesome";
+  }
+}
+// ----------------------------------- Date
+
+.date-input {
+  @include span-columns($option-width);
+  position: relative;
+  input {
+    @include span-columns(3);
+  }
+
+  a {
+    display: inline-block;
+    padding: 7px 30px 5px 10px;
+    position: absolute;
+    right: 0;
+    top: -34px;
+  }
+  @media screen and (min-width: 800px) {
+    @include span-columns($option-width-full);
+  }
+  > div {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+}
+
+.datepicker {
+  animation: fadeIn 0.5s forwards;
+  background: white;
+  box-shadow: 0px 10px 32px -1px rgba(0,0,0,0.1);
+  margin: 5px 0 0 0;
+  overflow: hidden;
+  button {
+    height: 21px;
+    background: white;
+    border: none;
+    color: black;
+    border: none;
+    text-align: center;
+    transition: all 0.25s ease-in;
+    &:hover {
+      cursor: pointer;
+      background: $hairline;
+    }
+  }
+  .controls {
+    @include outer-container;
+    background: #f9f9f9;
+    margin: 5px 0;
+    button {
+      background: #f9f9f9;
+      height: 42px;
+      &:hover {
+        background: white;
+      }
+    }
+    .left-arrow,
+    .right-arrow {
+      @include span-columns(2);
+      border: none;
+      color: $red--candy;
+    }
+    .current {
+      @include span-columns(8);
+      border: none;
+      color: $red--candy;
+      font-weight: bold;
+    }
+  }
+
+  // --------------------------------------------- YEARS
+  .year button {
+    border-top: 1px solid $hairline;
+    border-right: 1px solid $hairline;
+    float: left;
+    height: auto;
+    padding: 8px 3px;
+    width: 33.333%;
+  }
+  .year ol li:nth-child(-n+3) button {
+    border-top: none;
+  }
+  .year ol li:nth-child(3n) button {
+    border-right: none;
+  }
+  // --------------------------------------------- MONTHS
+  .month button {
+    border-top: 1px solid $hairline;
+    border-right: 1px solid $hairline;
+    float: left;
+    height: auto;
+    padding: 8px 3px;
+    width: 33.333%;
+  }
+  .month ol li:nth-child(-n+3) button {
+    border-top: none;
+  }
+  .month ol li:nth-child(3n) button {
+    border-right: none;
+  }
+
+
+  // --------------------------------------------- DAYS
+  .day button {
+    border-right: 1px solid $hairline;
+    border-top: 1px solid $hairline;
+    float: left;
+    height: auto;
+    padding: 8px 4px;
+    width: 14.28%;
+  }
+  // No top border for first 7 days
+  .day ol li:nth-child(-n+7) button {
+    border-top: none;
+  }
+  // No right border for every 7th day
+  .day ol li:nth-child(7n) button {
+    border-right: none;
+  }
+  .not-current-month {
+    color: $hairline;
+  }
+  .today {
+    background-color: $hairline;
+    font-weight: bold;
+    &:hover {
+      background: darken($hairline, 10%);
+    }
+  }
+  .current-selection {
+    background: $red--candy;
+    font-weight: bold;
+    color: white;
+    &:hover {
+      background: darken($red--candy, 10%);
+    }
+  }
+  .not-current-month.current-selection {
+    color: white !important;
+  }
+}
+
+// ----------------------------------- Checkboxes
+input[type="checkbox"] {
+  position: absolute;
+  left: -99999px;
+}
+
+input[type="checkbox"]:focus ~ label.checkbox {
+  @include focus-style;
+}
+
+label.checkbox {
+  @include input-styling;
+  @include span-columns($checkbox-width);
+  @include shift($checkbox-shift);
+  color: white;
+  display: block;
+  position: relative;
+  text-align: center;
+  transition: all 0.25s ease-in;
+  -webkit-user-select: none;
+  user-select: none;
+  &::before {
+    background: #EEE;
+    border-radius: 50%;
+    display: inline-block;
+    content: '\f00c';
+    font-size: 0.95em;
+    font-family: "FontAwesome";
+    height: 21px;
+    padding-top: 3px;
+    transition: all 0.25s ease-in;
+    width: 21px;
+  }
+  &:hover {
+    cursor: pointer;
+    border-color: lighten($green, 20%);
+    &::before {
+      background: $green;
+    }
+  }
+  @media screen and (min-width: 800px) {
+    @include span-columns($checkbox-width-full);
+    @include shift($checkbox-shift-full);
+  }
+}
+
+// Checkbox actual
+@-webkit-keyframes pulse_animation {
+  0% { -webkit-transform: scale(1); }
+  50% { -webkit-transform: scale(1.2); }
+  100% { -webkit-transform: scale(1); }
+}
+
+input:checked ~ label.checkbox {
+  border-color: $green;
+  background: lighten($green, 40%);
+}
+input:checked ~ label.checkbox::before {
+  background: $green;
+  color: white;
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 250ms;
+}
+
+
+// Disabled checkbox
+input:disabled ~ label.checkbox {
+  border-color: $off-white;
+  &::before {
+    background-color: #f9f9f9;
+  }
+  &:hover {
+    cursor: default;
+  }
+}
+
+
+// ----------------------------------- Radio
+
+.radio-text-label {
+  @include span-columns(9)    ;
+  padding: 10px 0 4px 0;
+  position: relative;
+  transition: all 0.25s ease-in;
+  &:after {
+    top: 16px !important; // Adjust the Required star for taller field
+  }
+  &[disabled="disabled"] {
+    color: #ccc;
+  }
+}
+
+.radio-button {
+  border-radius: 3px;
+  label {
+    background: white;
+    border-radius: 3px 0 0 3px;
+    border-left: 1px solid $hairline-blue;
+    border-top: 1px solid $hairline-blue;
+    border-bottom: 1px solid $hairline-blue;
+    color: #bbb;
+    display: inline-block;
+    float: left;
+    margin: 0;
+    padding: 10px 15px;
+    transition: all 0.15s ease-in-out;
+    text-align: center;
+    width: auto;
+
+    &:last-of-type {
+      border-radius: 0px 3px 3px 0px;
+      border-right: 1px solid $hairline-blue;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:after {
+      content: none !important;
+    }
+  }
+}
+
+// Turn off default styling
+ input[type="radio"] {
+   opacity: 0;
+   position: absolute;
+   &:focus + label {
+     @include focus-style;
+     position: relative;
+     z-index: 10;
+   }
+ }
+ // Checked
+ input:not(:disabled)[type="radio"]:checked + label {
+   background: $blue;
+   color: white;
+ }
+ // Checked but a selection that is a warning
+ input:not(:disabled)[type="radio"].warning:checked + label {
+   background: $red--danger;
+   color: white;
+ }
+ // Disabled radio button should appear as just text
+ input[type="radio"]:not(:checked):disabled + label {
+   display: none;
+   &:hover { cursor: default; }
+ }
+ input[type="radio"]:checked:disabled + label {
+   display: block;
+   background: none;
+   border: none;
+   color: black;
+   &:hover { cursor: default; }
+ }
+ // If neither "Yes" nor "No" is selected, but both are disabled, display "No" as text
+ input[type="radio"]:not(:checked):disabled + label + input[type="radio"]:not(:checked):disabled + label {
+   display: block;
+   background: none;
+   border: none;
+   color: black;
+   &:hover { cursor: default; }
+ }
+
+
+
+// ----------------------------------- Tooltip
+.tooltip-item {
+  $tooltip-distance-from-item: 0em;
+  display: inline;
+  //opacity: 0.25;
+  transition: all 0.25s ease-in-out;
+  transition-delay: 0.2s;
+  margin-left: 2px;
+  img {
+    border: 1px dotten red;
+    vertical-align: top;
+    width: 25px;
+    height: 25px;
+  }
+  &:hover {
+    cursor: help;
+    opacity: 1;
+  }
+  &:focus,
+  &:hover .tooltip {
+    opacity: 1;
+    transform: translate(0,0);
+    visibility: visible;
+  }
+
+  .tooltip {
+    @include position(absolute, null 0 $tooltip-distance-from-item 0);
+    box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.05);
+    background-color: white;
+    border: 1px solid $hairline;
+    font-size: 0.9em;
+    max-width: 40em;
+    opacity: 0;
+    padding: 1em;
+    transition: all 0.35s cubic-bezier(.71,-0.79,.21,1.57);
+    transform: translate(0, 50px) scale(0.5);
+    transition-delay: 0.2s;
+    visibility: hidden;
+    z-index: 10;
+
+    p {
+      margin: 0;
+    }
+  }
+}

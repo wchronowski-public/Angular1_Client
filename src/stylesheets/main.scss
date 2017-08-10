@@ -1,0 +1,198 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+$site-width: 1000px;
+
+$blue: #378ec7;
+$blue--light: #7DA5E0;
+$blue--selected: #4791FB;
+$gray: #f9f9f9;
+$gray--light: #999999;
+$gray--medium: #586968;
+$gray--dark: #bbb;
+$green: #66CC9E;
+$orange: #E47150;
+$green: #27A974;
+$red: rgba(147, 22, 56, 1);
+$red--candy: #D6002B;
+$red--dark: #770027;
+$red--danger: rgb(211, 14, 14);
+$red--warning: #EE5C60;
+$teal: #CDECEE;
+$yellow: #E8C76F;
+$yellow--light: #fffde9;
+
+
+$focus-blue: #9ABEF9;
+$hairline-blue: #CFD5E0;
+$brand-color: $red;
+$cadet-blue: #A9B2C3;
+$iceberg: #85BBE3;
+$ice: #F9F9FB;
+$nile-blue: #143354;
+$robins-egg: #DBEDF7;
+$charcoal: #3C4C60;
+$downy: #6BCBC5;
+$logan: #9DA1C1;
+$hairline: #E9EEF5;
+$text-color: #283D54;
+$white--off: #f9f9f9;
+$off-white: #f2f2f2;
+
+// Media Query Breakpoints
+$medium: 600px;
+$large: 1000px;
+
+
+// Font Sizes
+$font--xsmall: 0.75em;
+$font--small: 0.875em;
+$font--regular: 1em;
+$font--medium: 1.15em;
+$font--large: 1.333em;
+$font--xlarge: 1.777em;
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
+$body-font: "Lato", "open-sans", "Helvetica", "Arial", sans-serif;
+
+@mixin focus-style {
+  box-shadow: 0px 0px 0px 2px $focus-blue;
+}
+
+@mixin focus-style-bold {
+  box-shadow: 0px 0px 0px 3px $focus-blue;
+}
+
+@mixin element-focus {
+  &:focus {
+    outline: none;
+    @include focus-style;
+  }
+  &::-moz-focus-inner { border : 0px !important; }
+}
+
+.centered { text-align: center; }
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #666;
+  font-family: $body-font;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  margin: 0;
+  padding: 10px;
+  @media screen and (min-width: 600px) {
+    padding: 0;
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 300;
+}
+a {
+  color: $nile-blue;
+  transition: all 0.15s ease-in;
+}
+
+hr {
+  border-top: 1px solid $hairline-blue;
+  border-bottom: 0;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.centered { text-align: center; }
+.no-margin {
+  margin: 0;
+}
+.no-bottom-margin {
+  margin-bottom: 0;
+}
+
+.plain-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.text__caution {
+  color: $red--warning;
+}
+
+.text__disclaimer {
+  color: $gray--light;
+  font-size: $font--xsmall;
+}
+
+
+// ------------------------------------------------ Lists
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[class*="list__"] {
+  li a {
+    border-bottom: 1px solid $hairline;
+    display: block;
+    padding: 8px;
+    &:hover {
+      background: #f9f9f9;
+      text-decoration: none;
+    }
+  }
+}
+
+.list__table {
+  li a {
+    color: $charcoal;
+    span {
+      color: $gray;
+      font-size: $font--small;
+      float: right;
+    }
+  }
+}
+
+.list__autocomplete {
+  margin-top: 1em;
+  li a {
+    color: $gray--medium;
+    text-decoration: none;
+  }
+  span {
+    color: $charcoal;
+    font-weight: 600;
+  }
+}
+
+
+
+
+
+
+
+@import 'bourbon';
+@import 'neat';
+@import 'animations';
+@import 'typography';
+@import 'modules';
+@import 'layout';
+@import 'header';
+@import 'forms';
+@import 'inputs';
+@import 'lists';
+@import 'content';
+@import 'styleguide';
+@import 'page/state_selection';
+@import 'page/policy_summary';
+@import 'vendor/font-awesome';

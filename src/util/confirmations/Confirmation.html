@@ -1,0 +1,8 @@
+<button ng-class="confirmation.buttonClass" ng-click="confirmation.activate()">
+  <ng-transclude/>
+</button>
+<div class="list--warning" ng-show="confirmation.isActive()">
+  <p>{{ confirmation.message }}</p>
+  <button class="button--text" ng-click="confirmation.confirm()">Yes</button>
+  <button class="button--text" ng-click="confirmation.cancel()">No</button>
+</div>

@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "charset": "utf8",
+    // "declaration": false, Output is configured externally
+    "diagnostics": false,
+    "emitBOM": false,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    // "inlineSourceMap": false, Source maps are configured externally
+    // "inlineSources": false, Source maps are configured externally
+    "isolatedModules": false,
+    "jsx": "preserve",
+    // "locale": "en-us", Omitted to give precedence to local machine settings
+    // "mapRoot":	null, File paths are configured externally
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["dom", "es7"],
+    // "newLine": "lf", Omitted to give precedence to local machine settings
+    // "noEmit": false, Output is configured externally
+    "noEmitHelpers": false,
+    // "noEmitOnError": false, Output is configured externally
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noLib": false,
+    "noResolve": false,
+    // "outDir": null, Output is configured externally
+    // "outFile":	null, Output is configured externally
+    "preserveConstEnums": false,
+    "pretty":	false,
+    "reactNamespace": "React",
+    "removeComments": true,
+    "baseUrl": ".",
+    "skipDefaultLibCheck": false,
+    // "sourceMap" false, Source maps are configured externally
+    // "sourceRoot": null, File paths are configured externally
+    "stripInternal": false,
+    "suppressExcessPropertyErrors": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "target": "es5"
+  },
+  "compileOnSave": false,
+  "include": [
+    "spec/**/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

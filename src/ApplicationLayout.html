@@ -1,0 +1,33 @@
+<div class="body-content">
+  <div class="sidebar">
+    <ul class="plain-list secondary-navigation">
+      <div class="branding">
+        <!-- TODO: the idea of a default route is duplicated in a couple of places -->
+        <a ui-state="STATES.GENERAL_SHOW" class="brand-logo">
+          <img src="./images/logo-on-white.svg">
+        </a>
+      </div>
+
+      <li>
+        <a ui-state="STATES.HOME">Portal</a>
+      </li>
+
+      <div ui-view="navigation"></div>
+
+      <li>
+        <a ui-state="STATES.STYLEGUIDE">Style Guide</a>
+      </li>
+
+      <li>
+        <a ui-state="STATES.AGENT_DEFAULTS_SHOW">Agent Defaults</a>
+      </li>
+    </ul>
+  </div>
+
+  <notifications></notifications>
+  <div class="content-wrap">
+    <div class="main-content fade-in" ui-view="main" class="content">
+      <!-- Selected view will inject here -->
+    </div>
+  </div>
+</div>

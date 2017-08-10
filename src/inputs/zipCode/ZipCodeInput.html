@@ -1,0 +1,34 @@
+<div>
+  <label class="primary-label" for="{{ elementId }}">
+    {{ label }}
+  </label>
+
+  <div ng-if="input.shouldShowErrors()">
+    <div class="field-error"
+         ng-repeat="error in errors">
+      {{ error }}
+    </div>
+  </div>
+
+  <div>
+    <input id="{{ elementId }}"
+           class="split-text"
+           alt="ZIP Code"
+           ng-class="input.isValid() ? 'valid': 'invalid'"
+           type="text"
+           ng-change="input.changed()"
+           ng-blur="input.blurred()"
+           ng-model="model.baseValue"
+           maxlength="5" />
+
+    <input id="{{ elementId + '-extendedValue' }}"
+           class="split-text"
+           alt="ZIP Code + 4"
+           ng-class="input.isValid() ? 'valid': 'invalid'"
+           type="text"
+           ng-change="input.changed()"
+           ng-blur="input.blurred()"
+           ng-model="model.extendedValue"
+           maxlength="4" />
+  </div>
+</div>

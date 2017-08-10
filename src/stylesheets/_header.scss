@@ -1,0 +1,80 @@
+// ----------------------------------------------------- SIDEBAR
+@media screen and (min-width: 600px) {
+  .secondary-navigation {
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .branding {
+      border-bottom: 1px solid $hairline;
+      background: white;
+      img {
+        display: block;
+        padding: 20px 20px 20px 10px;
+        width: 100%;
+      }
+    }
+  }
+  .secondary-navigation li {
+    font-size: $font--small;
+    transition: all 0.25s ease-in;
+    border-bottom: 1px solid white;
+    a {
+      color: $charcoal;
+      display: block;
+      text-decoration: none;
+      padding: 8px 10px;
+      .total {
+        background: $logan;
+        border-radius: 4px;
+        color: white;
+        font-size: 0.9em;
+        margin-left: 4px;
+        padding: 2px 6px 3px 6px;
+      }
+      &:hover,
+      &.active {
+        background: white;
+        color: black;
+        cursor: pointer;
+      }
+      &.active {
+        font-weight: bold;
+        box-shadow: inset 0px -1px 0px 0px $red;
+      }
+      &.complete:after {
+        color: $green;
+        content: "\f00c";
+        font-family: "FontAwesome";
+        margin-left: 4px;
+      }
+    }
+    i {
+      color: rgba(0,0,0,0.5);
+      margin-left: 4px;
+    }
+  }
+  .policy-information {
+    border-bottom: 1px solid $hairline-blue !important;
+    padding: 10px;
+    div {
+      overflow: hidden;
+      padding: 2px 0;
+      text-overflow: ellipsis;
+      white-space: no-wrap;
+      width: 100%;
+    }
+    span {
+      color: $charcoal;
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .secondary-navigation li a {
+    padding: 12px 10px;
+  }
+}

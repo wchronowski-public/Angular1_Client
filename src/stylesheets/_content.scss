@@ -1,0 +1,233 @@
+.step-indicator {
+  border-bottom: 1px solid $hairline-blue;
+  color: $charcoal;
+  font-size: $font--large;
+  font-weight: 500;
+  margin: 0 0 1em 0;
+  padding: 0.75em;
+  text-align: center;
+}
+
+.agency-options {
+  #agencyNumber {
+    @include span-columns(3);
+    margin-right: 10px !important;
+  }
+}
+
+.page-actions {
+  @include outer-container(9999px);
+  @include direction-context(right-to-left) {
+    .secondary {
+      @include span-columns(2);
+    }
+    .primary {
+      @include span-columns(3);
+    }
+    .form-validation-message {
+      @include span-columns(4);
+    }
+  }
+}
+
+
+
+.search-form {
+  @include outer-container($site-width);
+  background: $white--off;
+  border-bottom: 1px solid $hairline;
+  font-size: $font--small;
+  padding: 20px;
+  width: 100%;
+  .clear-all {
+    color: $red--warning;
+    display: inline-block;
+    padding: 8px 0;
+    text-decoration: none;
+  }
+  .filters {
+    @include outer-container($site-width);
+    margin-top: 1.5em;
+  }
+  .quick-filters {
+    margin-top: 15px;
+    li {
+      display: inline-block;
+      margin-left: 0.5em;
+      button {
+        background: white;
+        border: 1px solid $hairline;
+        border-radius: 6px;
+        display: inline-block;
+        padding: 6px 10px;
+        transition: all 0.25s ease-in;
+        &:after {
+          color: $gray;
+          content: "\f057";
+          display: inline-block;
+          font-family: "FontAwesome";
+          margin-left: 8px;
+          transform: rotate(45deg);
+          transition: transform 0.1s ease-in;
+        }
+        &.active {
+          background: $nile-blue;
+          color: white;
+          &:after {
+            transform: rotate(90deg);
+          }
+        }
+        &:hover {
+          background: lighten($nile-blue, 20%);
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.search-results {
+  .item-list-header {
+    .sorted {
+      &:after {
+        float: right;
+        margin-right: 10px;
+        content: ">";
+        transform: rotate(90deg);
+      }
+    }
+    .sorted.descending {
+      &:after {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+
+.vin-validation {
+  padding: 5em 0 5em 0;
+  text-align: center;
+  .inputs {
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 75%;
+    text-input {
+      @include span-columns(9);
+    }
+  }
+  label { display: none; }
+  input[type="text"] {
+    font-size: $font--large;
+    padding: 10px;
+    width: 100%;
+  }
+  button {
+    padding: 1.2em 2em;
+    @include span-columns(3);
+  }
+  .field-error {
+    left: 0;
+    right: 0;
+    width: 100%;
+    &:after {
+      border: none !important;
+    }
+  }
+}
+
+@mixin sum-bubble($background, $text-color) {
+  background-color: $background;
+  border-radius: 3px;
+  color: $text-color;
+}
+
+.sum-bubble--green {
+  @include sum-bubble($green, white);
+  display: inline-block;
+  float: right;
+  padding: 1px 8px 2px 8px;
+}
+// ---------------------------------- Summary Card
+.inline-select {
+  float: none;
+  font-size: 1rem;
+  display: inline-block;
+  margin-left: 0.5em;
+  width: auto;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+
+
+.welcome {
+  @include outer-container(9999px);
+  animation: slideInDown 0.5s forwards;
+  .splash {
+    @include span-columns(6);
+    border-right: 1px solid $hairline-blue;
+    border-radius: 3px;
+    padding: 4em 2em;
+    text-align: center;
+    img {
+      display: block;
+      margin: 0 auto 4em auto;
+      width: 75%;
+    }
+    h1 {
+      color: $red;
+      font-size: $font--xlarge;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: $font--medium;
+    }
+  }
+  .right-panel {
+    @include span-columns(6);
+    img {
+      display: block;
+      padding: 1.5em 6em 1.5em 6em;
+      width: 100%;
+    }
+  }
+  .start-quote {
+    padding-top: 3em;
+    text-align: center;
+    a {
+      width: 60%;
+    }
+  }
+}
+
+.notifications {
+  @include outer-container(9999px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  .notification {
+    @include span-columns(10);
+    @include shift(2);
+    animation: pageNotificationIn 0.5s forwards;
+    color: white;
+    padding: 0.75em 1.5em;
+    &.info { background: $green; }
+    &.warn,
+    &.error { background: $red--warning; }
+    &.dismissing {
+      animation: pageNotificationOut 0.5s forwards;
+    }
+    .dismiss {
+      float: right;
+      padding-top: 2px;
+    }
+  }
+}

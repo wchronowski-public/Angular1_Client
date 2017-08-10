@@ -1,0 +1,98 @@
+.policy-summary {
+  .summary {
+    img {
+      display: block;
+      margin: 0 auto;
+      opacity: 0.5;
+    }
+  }
+  .summary-card {
+    ul {
+      &.sub-list {
+        animation: slideInDown 0.2s forwards;
+        margin-left: 11px;
+      }
+      li {
+        @include outer-container;
+        border-bottom: 1px solid $hairline;
+        padding: 5px;
+        &:nth-child(even) {
+          background: $ice;
+        }
+        span {
+          @include span-columns(6);
+          min-height: 1px;
+          &:nth-child(2) {
+            text-align: right;
+          }
+        }
+        select,
+        .option {
+          @include span-columns(6);
+        }
+      }
+    }
+  }
+  &.detailed {
+    .summary-card {
+      ul li span {
+        @include span-columns(4);
+        &:nth-child(3) {
+          text-align: right;
+        }
+      }
+      .section-title span {
+        @include span-columns(4);
+        &:nth-child(3) {
+          font-weight: bold;
+          text-align: right;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 950px) {
+    .summary {
+      @include span-columns(5);
+    }
+    .summary-card {
+      @include span-columns(7);
+    }
+  }
+}
+
+
+.summary-card {
+  border: 2px solid $green;
+  font-size: $font--small;
+  padding: 0 10px;
+  .premium-total {
+    .title {
+      color: lighten($gray--medium, 30%);
+      font-size: $font--xsmall;
+      display: block;
+    }
+    .dollar-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1em;
+    }
+  }
+  .section-title {
+    @include outer-container;
+    border-bottom: 1px solid $hairline;
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    padding: 5px;
+    span {
+      @include span-columns(6);
+      min-height: 1px;
+      &:nth-child(2) {
+        text-align: right;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

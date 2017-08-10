@@ -1,0 +1,124 @@
+
+<h1>Style Guide</h1>
+<fieldset>
+  <legend>Fieldset legend</legend>
+    <div>
+      <label>Text input</label>
+      <div class="field-error"
+      ng-if="form.shouldShowMessagesFor(form.formController.firstName)"
+      ng-messages="form.formController.firstName.$error">
+      <div ng-message="required">Please enter a value for this field.</div>
+    </div>
+    <input type="text"
+           name="firstName"
+           ng-model="form.firstName"
+           required>
+    </input>
+  </div>
+
+  <div>
+    <label>Address Autofill input</label>
+    <div class="field-error"
+         ng-if="form.shouldShowMessagesFor(form.formController.firstName)"
+         ng-messages="form.formController.firstName.$error">
+         <div ng-message="required">Please enter a value for this field.</div>
+    </div>
+    <input type="text"
+           class="address-autofill-option"
+           name="firstName"
+           ng-model="form.firstName"
+          required>
+    </input>
+    <a class="autofill-toggle" href="#"></a>
+  </div>
+
+  <div>
+    <label>Two option radio button</label>
+    <div class="field-error"
+         ng-if="form.shouldShowMessagesFor(form.formController.gender)"
+         ng-messages="form.formController.gender.$error">
+    <div ng-message="required">2 option radio button</div>
+    </div>
+    <div class="option radio-button">
+      <input type="radio" id="Male" name="gender" value="Male" ng-model="form.gender" required="">
+      <label for="Male">Yes</label>
+      <input type="radio" id="Female" name="gender" value="Female" ng-model="form.gender" required="">
+      <label for="Female">No</label>
+    </div>
+  </div>
+
+  <div class="required">
+    <date-input label="Birthday Date"
+                model=""
+                errors=""
+                context="form"></date-input>
+  </div>
+
+  <div>
+    <label>Select dropdown</label>
+    <div class="field-error"
+         ng-if="form.shouldShowMessagesFor(form.formController.occupation)"
+         ng-messages="form.formController.occupation.$error">
+      <div ng-message="required">Please enter a value for this field.</div>
+    </div>
+    <select name="occupation"
+            ng-model="form.occupation"
+            ng-options="item.key as item.value for item in form.getOccupationOptions()"
+            required>
+    </select>
+  </div>
+
+  <div>
+    <checkbox-input label="Right aligned checkbox"
+                    model=""
+                    errors=""
+                    context="form"></checkbox-input>
+  </div>
+  
+  <div>
+    <checkbox-input label="Disabled checkbox"
+                    model=""
+                    disabled="true"
+                    errors=""
+                    context="form"></checkbox-input>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Color Palette</legend>
+  <ul class="color_palette">
+    <li class="green"><span></span>$green;</li>
+    <li class="red"><span></span>$red;</li>
+    <li class="red--warning"><span></span>$red--warning;</li>
+    <li class="blue"><span></span>$blue;</li>
+    <li class="blue--light"><span></span>$blue--light;</li>
+    <li class="hairline-blue"><span></span>$hairline-blue;</li>
+  </ul>
+</fieldset>
+
+<fieldset>
+  <legend>Text</legend>
+  <div>
+    <h1>H1</h1>
+    <h2>H2</h2>
+    <h3>H3</h3>
+    <h4>H4</h4>
+    <h5>H5</h5>
+    <p>Basic body text. But I don't think thou wilt be able to at present. I don't know exactly what's the matter with him; but he keeps close inside the house; a sort of sick, and yet he don't look so. In fact, he ain't sick; but no, he isn't well either. Any how, young man, he won't always see me, so I don't suppose he will thee.</p>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Buttons &amp; Misc.</legend>
+  <div>
+    <button class="button--continue">
+      Save
+    </button>
+
+    <button type="button"
+    class="button--basic"
+    ng-click="form.cancel()">
+    Cancel
+  </button>
+  </div>
+</fieldset>

@@ -1,0 +1,114 @@
+<div class="datepicker">
+  <div class="year"
+       ng-show="controller.shouldShowYearSelection()">
+    <div class="controls">
+      <button class="left-arrow"
+              type="button"
+              ng-click="controller.leftButtonClicked()">
+        <span><i class="fa fa-arrow-left"></i></span>
+      </button>
+
+      <button class="current"
+              type="button"
+              ng-click="controller.backButtonClicked()">
+        <span>{{ controller.currentMinimumYearSelection() }} - {{ controller.currentMaximumYearSelection() }}</span>
+      </button>
+
+      <button class="right-arrow"
+              type="button"
+              ng-click="controller.rightButtonClicked()">
+        <span><i class="fa fa-arrow-right"></i></span>
+      </button>
+    </div>
+
+    <div>
+      <ol>
+        <li ng-repeat="year in controller.yearSelections">
+          <button type="button"
+                  ng-class="{
+                    'current-selection': controller.shouldDisplayAsCurrentYearSelection(year),
+                  }"
+                  ng-click="controller.selectYear(year)">
+            <span>{{ year }}</span>
+          </button>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="month"
+       ng-show="controller.shouldShowMonthSelection()">
+    <div class="controls">
+      <button class="left-arrow"
+              type="button"
+              ng-click="controller.leftButtonClicked()">
+        <span><i class="fa fa-arrow-left"></i></span>
+      </button>
+
+      <button class="current"
+              type="button"
+              ng-click="controller.backButtonClicked()">
+        <span>{{ controller.currentYearSelection }}</span>
+      </button>
+
+      <button class="right-arrow"
+              type="button"
+              ng-click="controller.rightButtonClicked()">
+        <span><i class="fa fa-arrow-right"></i></span>
+      </button>
+    </div>
+
+    <div>
+      <ol>
+        <li ng-repeat="month in controller.monthSelections">
+          <button type="button"
+                  ng-class="{
+                    'current-selection': controller.shouldDisplayAsCurrentMonthSelection(month),
+                  }"
+                  ng-click="controller.selectMonth(month)">
+            <span>{{ controller.monthName(month) }}</span>
+          </button>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="day"
+       ng-show="controller.shouldShowDaySelection()">
+    <div class="controls">
+      <button class="left-arrow"
+              type="button"
+              ng-click="controller.leftButtonClicked()">
+        <span><i class="fa fa-arrow-left"></i></span>
+      </button>
+
+      <button class="current"
+              type="button"
+              ng-click="controller.backButtonClicked()">
+        <span>{{ controller.currentMonthName() }} {{ controller.currentYearSelection }}</span>
+      </button>
+
+      <button class="right-arrow"
+              type="button"
+              ng-click="controller.rightButtonClicked()">
+        <span><i class="fa fa-arrow-right"></i></span>
+      </button>
+    </div>
+
+    <div>
+      <ol>
+        <li ng-repeat="selection in controller.daySelections">
+          <button type="button"
+                  ng-class="{
+                    'not-current-month': !selection.isDisplayedMonth,
+                    'today'            : controller.shouldDisplayDateSelectionAsToday(selection),
+                    'current-selection': controller.shouldDisplayAsCurrentDateSelection(selection),
+                  }"
+                  ng-click="controller.selectDay(selection)">
+            <span>{{ selection.date.getDate() }}</span>
+          </button>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>

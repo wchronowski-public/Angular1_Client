@@ -1,0 +1,55 @@
+<label for="{{ monthElementId }}">
+  {{ label }}
+</label>
+
+<div ng-if="input.shouldShowErrors()">
+  <div class="field-error"
+       ng-repeat="error in errors">
+    {{ error }}
+  </div>
+</div>
+
+<div id="{{ groupId }}" class="date-input">
+  <input id="{{ monthElementId }}"
+         class="month"
+         alt="Month"
+         ng-class="input.isValid() ? 'valid': 'invalid'"
+         placeholder="MM"
+         type="text"
+         maxlength="2"
+         ng-blur="input.monthBlurred()"
+         ng-change="input.monthChanged()"
+         ng-model="model.month" />
+
+  <input id="{{ dayElementId }}"
+         class="day"
+         alt="Day"
+         ng-class="input.isValid() ? 'valid': 'invalid'"
+         placeholder="DD"
+         type="text"
+         maxlength="2"
+         ng-blur="input.dayBlurred()"
+         ng-change="input.dayChanged()"
+         ng-model="model.day" />
+
+  <input id="{{ yearElementId }}"
+         class="year"
+         alt="Year"
+         ng-class="input.isValid() ? 'valid': 'invalid'"
+         placeholder="YYYY"
+         type="text"
+         maxlength="4"
+         minlength="4"
+         ng-blur="input.yearBlurred()"
+         ng-model="model.year" />
+
+  <div on-document-click="input.documentClicked()">
+    <a href="#" ng-click="input.calendarIconClicked()">
+      <i class="fa fa-calendar"></i>
+    </a>
+
+    <datepicker model="model"
+                on-selection="input.dateChosenWithDatepicker()"
+                ng-if="input.shouldShowDatepicker()"></datepicker>
+  </div>
+</div>

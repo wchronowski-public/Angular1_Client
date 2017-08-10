@@ -1,0 +1,12 @@
+<div class="notification"
+     ng-mousedown="$event.preventDefault()"
+     ng-click="controller.dismiss()"
+     ng-class="{
+       'info': controller.isInfo(),
+       'warn': controller.isWarn(),
+       'error': controller.isError(),
+       'dismissing': controller.isDismissing()
+     }">
+  <span class="message">{{ controller.notification.message }}</span>
+  <span class="fa fa-times-circle dismiss"></span>
+</div>

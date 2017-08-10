@@ -1,0 +1,28 @@
+<div>
+  <div ng-if="input.shouldShowErrors()">
+    <div class="field-error"
+         ng-repeat="error in errors">
+      {{ error }}
+    </div>
+  </div>
+
+  <label class="primary-label">
+    {{ label }}
+  </label>
+
+  <div class="option radio-button">
+    <div ng-repeat="option in options">
+      <input type="radio"
+             id="{{ elementId + $index }}"
+             name="{{ name }}"
+             alt="{{ label }}"
+             ng-disabled="isDisabled"
+             ng-class="input.isValid() ? 'valid': 'invalid'"
+             ng-change="input.changed()"
+             ng-blur="input.blurred()"
+             ng-model="$parent.model"
+             ng-value=option.key />
+      <label for="{{ elementId + $index }}">{{ option.value }}</label>
+    </div>
+  </div>
+</div>

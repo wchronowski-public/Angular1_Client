@@ -1,0 +1,26 @@
+@mixin palette($color) {
+  span {
+    background: $color;
+  }
+}
+
+.color_palette {
+  @include outer-container(9999px);
+  li {
+    @include span-columns(1);
+    color: $charcoal;
+    font-weight: bold;
+    text-align: center;
+    span {
+      display: block;
+      padding-top: 100%;
+      width: 100%;
+    }
+  }
+  .green { @include palette($green); }
+  .red { @include palette($red); }
+  .red--warning { @include palette($red--warning); }
+  .blue { @include palette($blue); }
+  .blue--light { @include palette($blue--light); }
+  .hairline-blue { @include palette($hairline-blue); }
+}
