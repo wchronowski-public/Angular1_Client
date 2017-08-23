@@ -5,6 +5,10 @@
 npm install
 ```
 
+### Need to add the following files
+src/images/logo-on-white.svg
+src/images/logo-white.svg
+
 ## Listing Tasks
 ```bash
 npm run gulp -- --tasks
